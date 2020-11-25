@@ -1,0 +1,22 @@
+{
+  "name": "books-graphql-react-app",
+  "version": "1.0.0",
+  "private": "true",
+  "repository": "https://github.com/guillermocorrea/books-graphql-react-app.git",
+  "author": "Luis Correa",
+  "license": "MIT",
+  "workspaces": {
+    "packages": [
+      "packages/*",
+      "apps/*"
+    ]
+  },
+  "scripts": {
+    "lerna": "lerna",
+    "tsc": "tsc"
+  },
+  "devDependencies": {
+    "lerna": "^3.22.1",
+    "typescript": "^4.1.2"
+  }
+}
