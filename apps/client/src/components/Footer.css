@@ -1,0 +1,12 @@
+.footer {
+  padding: 5px;
+  text-align: center;
+  color: #fff;
+  font-size: 0.8rem;
+  background: rgb(3, 134, 204);
+  background: linear-gradient(
+    90deg,
+    rgba(3, 134, 204, 1) 0%,
+    rgba(0, 212, 255, 1) 100%
+  );
+}

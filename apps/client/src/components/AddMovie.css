@@ -1,0 +1,17 @@
+.addMovie {
+  background: lightgrey;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.addMovie form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.addMovie form > * {
+  margin: 0 5px;
+}
