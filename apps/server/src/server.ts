@@ -7,12 +7,13 @@ import './di.container';
 
 import IndexRoutes from './routes';
 import { errorHandler } from './middlewares/error-handler.middleware';
+import { environment } from './environment';
 
 export function server() {
   const app = express();
 
   // Settings
-  app.set('port', process.env.PORT || 3000);
+  app.set('port', environment.port);
   app.set('views', path.join(__dirname, 'views'));
   app.engine(
     '.hbs',

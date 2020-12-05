@@ -1,3 +1,6 @@
+import { environment } from './environment';
+require('dotenv').config();
+
 import { ApolloServer, gql } from 'apollo-server';
 
 const typeDefs = gql`
@@ -30,5 +33,5 @@ const server = new ApolloServer({
 });
 
 server
-  .listen({ port: 3000 })
+  .listen({ port: environment.port })
   .then(({ url }) => console.log(`Apollo server running at ${url}`));
