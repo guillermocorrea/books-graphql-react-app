@@ -1,5 +1,4 @@
-import { BadRequestException } from './../exceptions/bad-request.exception';
-import { logger } from '../middlewares/logger.middleware';
+import { BadRequestException, logger } from '@guillermocorrea/express-common';
 import { TodoService } from './../services/todo.service';
 import { NextFunction, Request, Response } from 'express';
 import { autoInjectable } from 'tsyringe';
@@ -18,7 +17,9 @@ export class IndexController {
         logger.error(`getTodo:id ${req.params.id} is not a number`);
         throw new BadRequestException('Invalid id parameter');
       }
-      const todo = await this.todoService?.getTodo(Number.parseInt(req.params.id));
+      const todo = await this.todoService?.getTodo(
+        Number.parseInt(req.params.id)
+      );
       res.send(todo);
     } catch (error) {
       next(error);

@@ -1,12 +1,11 @@
 import 'reflect-metadata';
 import express from 'express';
 import exphbs from 'express-handlebars';
-import { expressLogger } from './middlewares/logger.middleware';
+import { expressLogger, errorHandler } from '@guillermocorrea/express-common';
 import path from 'path';
 import './di.container';
 
 import IndexRoutes from './routes';
-import { errorHandler } from './middlewares/error-handler.middleware';
 import { environment } from './environment';
 
 export function server() {

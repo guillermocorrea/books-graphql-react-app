@@ -1,6 +1,6 @@
 require('dotenv').config();
 
-import { logger } from './middlewares/logger.middleware';
+import { logger } from '@guillermocorrea/express-common';
 import { server } from './server';
 
 const app = server();
