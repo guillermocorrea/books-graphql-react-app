@@ -1,7 +1,5 @@
-import express from 'express';
+import { logger } from './middlewares/logger.middleware';
+import { server } from './server';
 
-const app = express();
-
-app.get('/', (req, res) => res.send('Hello World!'));
-
-app.listen(4000, () => console.log('listening on port 4000'));
+const app = server();
+app.listen(app.get('port'), () => logger.info(`Server listening on port ${app.get('port')}`));
