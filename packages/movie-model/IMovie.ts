@@ -1,5 +1,5 @@
-export interface MovieProps {
-  id: number;
+export interface IMovie {
+  id: string;
   name: string;
   genre: string;
   year: number;

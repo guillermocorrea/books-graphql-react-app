@@ -1,80 +1,26 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import Movie from '../components/Movie';
-import { MovieProps } from '../model/model';
 import './Movies.css';
-
-const INITIAL_MOVIES: MovieProps[] = [
-  {
-    id: 1,
-    name: 'John Wick',
-    genre: 'Action',
-    year: 2019,
-    image:
-      'https://m.media-amazon.com/images/M/MV5BMDg2YzI0ODctYjliMy00NTU0LTkxODYtYTNkNjQwMzVmOTcxXkEyXkFqcGdeQXVyNjg2NjQwMDQ@._V1_UY1200_CR74,0,630,1200_AL_.jpg',
-  },
-  {
-    id: 2,
-    name: 'John Wick',
-    genre: 'Action',
-    year: 2019,
-    image:
-      'https://m.media-amazon.com/images/M/MV5BMDg2YzI0ODctYjliMy00NTU0LTkxODYtYTNkNjQwMzVmOTcxXkEyXkFqcGdeQXVyNjg2NjQwMDQ@._V1_UY1200_CR74,0,630,1200_AL_.jpg',
-  },
-  {
-    id: 3,
-    name: 'John Wick',
-    genre: 'Action',
-    year: 2019,
-    image:
-      'https://m.media-amazon.com/images/M/MV5BMDg2YzI0ODctYjliMy00NTU0LTkxODYtYTNkNjQwMzVmOTcxXkEyXkFqcGdeQXVyNjg2NjQwMDQ@._V1_UY1200_CR74,0,630,1200_AL_.jpg',
-  },
-  {
-    id: 4,
-    name: 'John Wick',
-    genre: 'Action',
-    year: 2019,
-    image:
-      'https://m.media-amazon.com/images/M/MV5BMDg2YzI0ODctYjliMy00NTU0LTkxODYtYTNkNjQwMzVmOTcxXkEyXkFqcGdeQXVyNjg2NjQwMDQ@._V1_UY1200_CR74,0,630,1200_AL_.jpg',
-  },
-  {
-    id: 5,
-    name: 'John Wick',
-    genre: 'Action',
-    year: 2019,
-    image:
-      'https://m.media-amazon.com/images/M/MV5BMDg2YzI0ODctYjliMy00NTU0LTkxODYtYTNkNjQwMzVmOTcxXkEyXkFqcGdeQXVyNjg2NjQwMDQ@._V1_UY1200_CR74,0,630,1200_AL_.jpg',
-  },
-  {
-    id: 6,
-    name: 'John Wick',
-    genre: 'Action',
-    year: 2019,
-    image:
-      'https://m.media-amazon.com/images/M/MV5BMDg2YzI0ODctYjliMy00NTU0LTkxODYtYTNkNjQwMzVmOTcxXkEyXkFqcGdeQXVyNjg2NjQwMDQ@._V1_UY1200_CR74,0,630,1200_AL_.jpg',
-  },
-  {
-    id: 7,
-    name: 'John Wick',
-    genre: 'Action',
-    year: 2019,
-    image:
-      'https://m.media-amazon.com/images/M/MV5BMDg2YzI0ODctYjliMy00NTU0LTkxODYtYTNkNjQwMzVmOTcxXkEyXkFqcGdeQXVyNjg2NjQwMDQ@._V1_UY1200_CR74,0,630,1200_AL_.jpg',
-  },
-  {
-    id: 8,
-    name: 'John Wick',
-    genre: 'Action',
-    year: 2019,
-    image:
-      'https://m.media-amazon.com/images/M/MV5BMDg2YzI0ODctYjliMy00NTU0LTkxODYtYTNkNjQwMzVmOTcxXkEyXkFqcGdeQXVyNjg2NjQwMDQ@._V1_UY1200_CR74,0,630,1200_AL_.jpg',
-  },
-];
+import { IMovie } from 'movie-model';
+import { useLazyQuery } from '@apollo/client';
+import { MOVIES } from '../queries';
 
 const Movies = () => {
-  const [movies, setMovies] = useState(INITIAL_MOVIES);
+  const [getMovies, { loading, error, data }] = useLazyQuery<{
+    movies: IMovie[];
+  }>(MOVIES);
+
+  useEffect(() => {
+    getMovies();
+  }, [getMovies]);
+
+  if (loading) {
+    return <div className='loading'>Loading...</div>;
+  }
+
   return (
     <div className='movies'>
-      {movies.map((movie) => (
+      {data?.movies.map((movie) => (
         <Movie
           key={movie.id}
           name={movie.name}

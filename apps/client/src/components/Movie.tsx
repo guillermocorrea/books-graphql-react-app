@@ -9,7 +9,6 @@ interface Props {
 }
 
 const Movie: React.FC<Props> = ({ name, genre, year, image }) => {
-  console.log(image);
   return (
     <div className='movie'>
       <h2>{name}</h2>

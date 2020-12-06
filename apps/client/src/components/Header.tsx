@@ -10,10 +10,10 @@ const Header = () => {
       </a>
       <div className='topnav__search-container'>
         <form>
-          <a href='/'>Add Movies</a>
+          <a href='#add-movie'>Add Movies</a>
           <input type='text' placeholder='Search...' name='search' />
           <button type='submit'>
-            <img src={searchIcon} />
+            <img src={searchIcon} alt='Search' />
           </button>
         </form>
       </div>
