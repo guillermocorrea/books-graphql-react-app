@@ -6,7 +6,7 @@ import { useLazyQuery } from '@apollo/client';
 import { MOVIES } from '../queries';
 
 const Movies = () => {
-  const [getMovies, { loading, error, data }] = useLazyQuery<{
+  const [getMovies, { loading, data }] = useLazyQuery<{
     movies: IMovie[];
   }>(MOVIES);
 
