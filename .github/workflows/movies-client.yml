@@ -10,13 +10,26 @@ on:
       - ".github/workflows/movies-client.yml"
 
 jobs:
-  deploy:
+  push_movies_client_to_registry:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Install
-        run: yarn install && yarn lerna bootstrap
-      - name: Add backend remote origin
-        run: git remote add heroku-movies-backend https://heroku:${{ secrets.HEROKU_API_TOKEN }}@git.heroku.com/${{ secrets.HEROKU_MOVIES_CLIENT_APP }}.git
-      - name: Deploy backend to Heroku
-        run: git push heroku-movies-backend `git subtree split --prefix apps/client master`:refs/heads/master --force
+      - name: Push Movies Client to Docker Hub
+        uses: docker/build-push-action@v2
+        with:
+          username: ${{secrets.DOCKERHUB_USERNAME}}
+          password: ${{secrets.DOCKERHUB_PASSWORD}}
+          context: .
+          file: ./Dockerfile.movies-client.prod
+          push: true
+          tags: ${{secrets.DOCKERHUB_USERNAME}}/movies-web-client:latest
+
+
+      # - name: Login to Heroku Container Registry
+      #   env:
+      #     HEROKU_API_TOKEN: ${{ secrets.HEROKU_API_TOKEN }}
+      #   run: heroku container:login
+      # - name: Build and push
+      #   env:
+      #     HEROKU_API_TOKEN: ${{ secrets.HEROKU_API_TOKEN }}
+      #   run: HEROKU_MOVIES_CLIENT_APP

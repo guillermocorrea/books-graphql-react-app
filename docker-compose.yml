@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  movies_client:
+    container_name: movies-web-client
+    build:
+      context: .
+      dockerfile: Dockerfile.web-client
+    ports:
+      - 3001:3000
+  movies_service:
+    container_name: movies-service
+    build:
+      context: .
+      dockerfile: Dockerfile.movies-service
+    ports:
+      - 4200:4200

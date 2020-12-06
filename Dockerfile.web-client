@@ -1,0 +1,16 @@
+FROM node:alpine
+
+WORKDIR /app
+
+COPY . ./
+
+RUN yarn install
+RUN yarn lerna bootstrap
+
+EXPOSE 3000
+
+EXPOSE $PORT
+
+WORKDIR /app/apps/client
+
+CMD ["yarn", "start"]
