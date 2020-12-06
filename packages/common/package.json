@@ -1,8 +1,11 @@
 {
   "name": "@guillermocorrea/express-common",
   "version": "1.0.0",
-  "main": "src/index.ts",
+  "main": "build/index.js",
   "license": "MIT",
+  "scripts": {
+    "build": "tsc"
+  },
   "devDependencies": {
     "@types/chai": "^4.2.14",
     "@types/express": "^4.17.9",
