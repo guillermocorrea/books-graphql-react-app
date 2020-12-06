@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "main": "build/index.js",
   "license": "MIT",
-  "engines": {
-    "node": "12"
-  },
   "scripts": {
     "start": "node build/index.js",
     "test": "cross-env NODE_ENV=test nyc --reporter=html --reporter=text --reporter=lcov mocha -r ts-node/register test/**/*.spec.ts",
