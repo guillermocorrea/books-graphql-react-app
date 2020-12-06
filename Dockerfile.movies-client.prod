@@ -5,8 +5,7 @@ WORKDIR /app
 
 COPY . ./
 
-RUN yarn install
-RUN yarn lerna bootstrap
+RUN npx lerna bootstrap
 
 WORKDIR /app/apps/client
 

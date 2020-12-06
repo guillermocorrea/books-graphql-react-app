@@ -4,8 +4,7 @@ WORKDIR /app
 
 COPY . ./
 
-RUN yarn install
-RUN yarn lerna bootstrap
+RUN npx lerna bootstrap
 
 RUN yarn lerna run build --scope=@guillermocorrea/express-common --stream
 
