@@ -30,13 +30,13 @@ jobs:
           file: ./Dockerfile.movies-client.prod
           push: true
           tags: ${{secrets.DOCKERHUB_USERNAME}}/movies-web-client:latest
-
-
-      # - name: Login to Heroku Container Registry
-      #   env:
-      #     HEROKU_API_TOKEN: ${{ secrets.HEROKU_API_TOKEN }}
-      #   run: heroku container:login
-      # - name: Build and push
-      #   env:
-      #     HEROKU_API_TOKEN: ${{ secrets.HEROKU_API_TOKEN }}
-      #   run: HEROKU_MOVIES_CLIENT_APP
+      - name: Login to Heroku Container Registry
+        env:
+          HEROKU_API_TOKEN: ${{ secrets.HEROKU_API_TOKEN }}
+        run: heroku container:login
+      - name: Build and push
+        env:
+          HEROKU_API_TOKEN: ${{ secrets.HEROKU_API_TOKEN }}
+        run: |
+          docker tag @guillermocorrea/movies-web-client:latest registry.heroku.com/${{ secrets.HEROKU_MOVIES_CLIENT_APP }}/web
+          docker push registry.heroku.com/${{ secrets.HEROKU_MOVIES_CLIENT_APP }}/web
