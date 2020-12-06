@@ -1,0 +1,20 @@
+name: Deploy to Heroku (Movies GraphQL endpoint)
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - "apps/movies-service/**"
+      - "packages/**"
+      - ".github/workflows/movies-graphql.yml"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Add backend remote origin
+        run: git remote add heroku-movies-backend https://heroku:${{ secrets.HEROKU_API_TOKEN }}@git.heroku.com/${{ secrets.HEROKU_MOVIES_BACKEND_APP }}.git
+      - name: Deploy backend to Heroku
+        run: git push heroku-movies-backend `git subtree split --prefix apps/movies-service master`:refs/heads/master --force

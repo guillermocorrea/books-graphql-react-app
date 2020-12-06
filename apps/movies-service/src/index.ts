@@ -5,5 +5,5 @@ import { server } from './server';
 
 const app = server();
 app.listen(app.get('port'), () =>
-  logger.info(`Server listening on port ${app.get('port')}`)
+  logger.info(`movies-service listening on port ${app.get('port')}`)
 );
