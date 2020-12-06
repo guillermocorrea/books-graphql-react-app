@@ -1,7 +1,7 @@
 {
   "name": "movies-service",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "build/index.js",
   "license": "MIT",
   "scripts": {
     "start": "node build/index.js",
