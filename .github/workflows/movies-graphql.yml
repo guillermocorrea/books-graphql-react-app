@@ -37,5 +37,6 @@ jobs:
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_TOKEN }}
         run: |
-          docker tag @guillermocorrea/movies-web-client:latest registry.heroku.com/${{ secrets.HEROKU_MOVIES_BACKEND_APP }}/web
+          docker pull guillermocorrea/movies-web-service
+          docker tag guillermocorrea/movies-web-service registry.heroku.com/${{ secrets.HEROKU_MOVIES_BACKEND_APP }}/web
           docker push registry.heroku.com/${{ secrets.HEROKU_MOVIES_BACKEND_APP }}/web
