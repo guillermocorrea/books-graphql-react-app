@@ -41,4 +41,4 @@ jobs:
           docker pull guillermocorrea/movies-web-client
           docker tag guillermocorrea/movies-web-client:latest registry.heroku.com/${{ secrets.HEROKU_MOVIES_CLIENT_APP }}/web
           docker push registry.heroku.com/${{ secrets.HEROKU_MOVIES_CLIENT_APP }}/web
-          heroku container:push web
+          heroku container:release web -a ${{ secrets.HEROKU_MOVIES_CLIENT_APP }}
