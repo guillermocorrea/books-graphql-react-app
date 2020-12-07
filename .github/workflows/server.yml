@@ -1,0 +1,20 @@
+name: Deploy to Heroku (Movies GraphQL endpoint)
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - "apps/server/**"
+      - "packages/**"
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build
+        run: |
+          npx lerna bootstrap
+          yarn lerna run build --scope=@guillermocorrea/express-common
+          yarn lerna run build --scope=server
+          yarn lerna run test --scope=server

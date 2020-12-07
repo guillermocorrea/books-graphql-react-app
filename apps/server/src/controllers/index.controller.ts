@@ -7,7 +7,7 @@ import { autoInjectable } from 'tsyringe';
 export class IndexController {
   constructor(private todoService?: TodoService) {}
 
-  index = (req: Request, res: Response) => {
+  index = (_: Request, res: Response) => {
     res.send('Hello World');
   };
 
