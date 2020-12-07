@@ -1,0 +1,19 @@
+<h1>Books</h1>
+
+{{#if books}}
+<div class="book-list">
+  {{#each books}}
+  <div class="book-card">
+    <div class="book-card__title">
+      {{title}}
+    </div>
+    <p>
+      Author: {{author}}
+    </p>
+    <p>
+      ISBN: {{isbn}}
+    </p>
+  </div>
+  {{/each}}
+  {{/if}}
+</div>

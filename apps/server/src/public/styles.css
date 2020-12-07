@@ -1,0 +1,105 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.navbar {
+  padding: 20px;
+  background: #1f2937;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar a {
+  color: #d1d5db;
+  text-decoration: none;
+}
+
+a.navbar__logo {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.navbar__menu a {
+  padding: 10px;
+  margin: 0 5px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.navbar__menu a:hover {
+  background: #304057;
+  color: #fff;
+}
+
+.main-body {
+  padding: 20px;
+}
+
+/* Forms */
+
+.form-card {
+  margin: 20px 0;
+  width: 50vw;
+  border: 1px solid lightgray;
+  padding: 20px;
+  border-radius: 5px;
+  background: #f3f4f6;
+}
+
+.form-group {
+  margin: 20px 0;
+  width: 100%;
+}
+
+.form-group input {
+  box-sizing: border-box;
+  padding: 10px;
+  width: 100%;
+}
+
+.form-card button[type='submit'] {
+  padding: 10px 20px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  background: #4f46e5;
+  border: 2px solid #3b35ad;
+  border-radius: 10px;
+  color: #fff;
+}
+
+.form-card button[type='submit']:hover {
+  background: #3b35ad;
+}
+
+.form-card button[type='submit'].block {
+  width: 100%;
+}
+
+/* Book list */
+
+.book-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.book-card {
+  width: 200px;
+  margin: 20px;
+  border: 1px solid lightgray;
+  padding: 20px;
+  border-radius: 5px;
+  background: #f3f4f6;
+}
+
+.book-card__title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}

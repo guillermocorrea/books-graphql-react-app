@@ -4,8 +4,11 @@ import exphbs from 'express-handlebars';
 import { expressLogger, errorHandler } from '@guillermocorrea/express-common';
 import path from 'path';
 import './di.container';
+import './database';
 
 import IndexRoutes from './routes';
+import BooksRoutes from './routes/books';
+
 import { environment } from './environment';
 
 export function server() {
@@ -21,12 +24,13 @@ export function server() {
       layoutsDir: path.join(app.get('views'), 'layouts'),
       partialsDir: path.join(app.get('views'), 'partials'),
       helpers: require('./lib/helpers'),
+      defaultLayout: 'main',
     })
   );
   app.set('view engine', '.hbs');
 
   // Middlewares
-  if (process.env.NODE_ENV !== 'test') {
+  if (!environment.isTestEnvironment) {
     app.use(expressLogger);
   }
   app.use(express.json());
@@ -34,6 +38,7 @@ export function server() {
 
   // Routes
   app.use('/', IndexRoutes);
+  app.use('/books', BooksRoutes);
 
   // Static files
   app.use(express.static(path.join(__dirname, 'public')));

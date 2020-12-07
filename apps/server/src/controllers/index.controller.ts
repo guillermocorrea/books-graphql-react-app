@@ -8,7 +8,7 @@ export class IndexController {
   constructor(private todoService?: TodoService) {}
 
   index = (_: Request, res: Response) => {
-    res.send('Hello World');
+    res.render('index', { title: 'Welcome to Book App' });
   };
 
   getTodo = async (req: Request, res: Response, next: NextFunction) => {

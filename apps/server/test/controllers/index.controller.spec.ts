@@ -11,9 +11,8 @@ describe('/', () => {
     request = supertest.agent(app);
   });
 
-  it('should respond 200 with "Hello World" text', async () => {
+  it('should respond 200', async () => {
     const res = await request.get('/');
     expect(res.status).to.equal(200);
-    expect(res.text).to.equal('Hello World');
   });
 });
