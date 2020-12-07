@@ -1,4 +1,4 @@
-name: Deploy to Heroku (Movies GraphQL endpoint)
+name: Build Server
 
 on:
   push:
