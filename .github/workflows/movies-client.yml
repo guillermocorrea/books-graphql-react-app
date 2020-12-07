@@ -8,6 +8,7 @@ on:
       - "apps/client/**"
       - "packages/**"
       - ".github/workflows/movies-client.yml"
+      - "Dockerfile.movies-client.prod"
 
 jobs:
   push_movies_client_to_registry:
